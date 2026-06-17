@@ -1,0 +1,30 @@
+const form = document.getElementById("orderForm");
+
+if (form) {
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const email = form.querySelector("input[type='email']").value;
+        const phone = form.querySelector("input[type='tel']").value;
+
+        if (!email.includes("@")) {
+            alert("Ошибка email");
+            return;
+        }
+
+        if (phone.length < 10) {
+            alert("Ошибка телефона");
+            return;
+        }
+
+        alert("Заказ оформлен");
+        form.reset();
+    });
+
+
+    form.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", () => {
+            input.style.border = input.value ? "2px solid green" : "2px solid green";
+        });
+    });
+}
